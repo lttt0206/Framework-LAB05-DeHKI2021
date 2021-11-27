@@ -16,7 +16,7 @@ namespace DeThiHKI2021.Controllers
         }
         public IActionResult ViewThietBiBaoTri(string MaNV,string MaTB, string MaCH, int lan, string ngay)
         {
-            DataContext context = HttpContext.RequestServices.GetService(typeof(DeThiHKI2021.Models.DataContext)) as DataContext;
+            //DataContext context = HttpContext.RequestServices.GetService(typeof(DeThiHKI2021.Models.DataContext)) as DataContext;
             // NVBTModel nvbt = context.sqlViewThietBiBaoTri(MaNV, MaTB, MaCH, lan);
             NVBTModel nvbt = new NVBTModel();
             nvbt.MaNhanVien = MaNV;

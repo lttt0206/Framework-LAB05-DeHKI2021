@@ -7,7 +7,8 @@
         <label>Mã thiết bị:</label> <input type="text" name="MaTB" value="@Model.MaThietBi" /><br>
         <label>Mã căn hộ: </label> <input type="text" name="MaCH" value="@Model.MaCanHo" /><br>
         <label>Lần thứ: </label> <input type="text" name="LanThu" value="@Model.LanThu" /><br>
-        <label>Ngày bảo trì: </label> <input type="datetime" name="NgayBaoTri" value="@Model.NgayBaoTri.ToString("dd/MM/yyyy")" /><br>
+        <label>Ngày bảo trì: </label> <input type="date" name="NgayBaoTri" value="@Model.NgayBaoTri.ToString("yyyy-MM-dd")" />
+        @*<input asp-for="NgayBaoTri" /><span asp-validation-for="NgayBaoTri"></span>*@<br>
         <input type="submit" name="submit" value="Update" />
     </form>
 }

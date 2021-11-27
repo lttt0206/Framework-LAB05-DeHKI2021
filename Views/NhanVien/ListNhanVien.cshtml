@@ -1,0 +1,13 @@
+﻿@model List<DeThiHKI2021.Models.NhanVienModel>
+
+<form action="/NVBT/ListThietBiTheoNhanVien" method="POST">
+    <label>Tên nhân viên: </label> 
+    <select name="MaNhanVien" id="MaNhanVien">
+        @foreach (var item in Model)
+        {
+            <option value="@item.MaNhanVien">@item.TenNhanVien </option>
+
+        }
+    </select><br>
+    <input type="submit" value="Liệt Kê" name="submit" id="Lietke" />
+</form>

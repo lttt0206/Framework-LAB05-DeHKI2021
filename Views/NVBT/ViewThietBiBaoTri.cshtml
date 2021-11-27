@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "View Chi tiết bảo trì";
+}
+@model DeThiHKI2021.Models.NVBTModel
+@{
+    <form action="/NhanVien/" method="post">
+        <label>Mã thiết bị:</label> <input type="text" name="MaTB" value="@Model.MaThietBi" /><br>
+        <label>Mã căn hộ: </label> <input type="text" name="MaCH" value="@Model.MaCanHo" /><br>
+        <label>Lần thứ: </label> <input type="text" name="LanThu" value="@Model.LanThu" /><br>
+        <label>Ngày bảo trì: </label> <input type="datetime" name="NgayBaoTri" value="@Model.NgayBaoTri.ToString("dd/MM/yyyy")" /><br>
+        <input type="submit" name="submit" value="Update" />
+    </form>
+}

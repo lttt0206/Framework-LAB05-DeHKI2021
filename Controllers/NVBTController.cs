@@ -28,17 +28,30 @@ namespace DeThiHKI2021.Controllers
             return View();
         }
 
-        /*[HttpPost]
-        public string UpdateThietBiBaoTri(NVBTModel nvbt)
+        [HttpPost]
+        public IActionResult UpdateThietBiBaoTri(string maNV,NVBTModel nvbt)
         {
             int count;
             DataContext context = HttpContext.RequestServices.GetService(typeof(DeThiHKI2021.Models.DataContext)) as DataContext;
-            count = context.sqlInsertCanHo(nvbt);
-            if (count == 1)
+            nvbt.MaNhanVien = maNV;
+            count = context.sqlUpdateNVBT(nvbt);
+            if (count > 0)
             {
-                return "Thêm Thành Công!";
+                ViewData["thongbao"] = "Update thành công";
+            } else ViewData["thongbao"] = "Update không thành công";
+            return View();
+        }
+        public IActionResult DeleteThietBiBaoTri(string MaNV, string MaTB, string MaCH, int lan, string ngay)
+        {
+            int count;
+            DataContext context = HttpContext.RequestServices.GetService(typeof(DeThiHKI2021.Models.DataContext)) as DataContext;            
+            count = context.sqlDeleteNVBT(MaNV, MaTB, MaCH, lan);
+            if (count > 0)
+            {
+                ViewData["thongbao"] = "Delete thành công";
             }
-            return "Thêm thất bại";
-        }*/
+            else ViewData["thongbao"] = "Delete không thành công";
+            return View();
+        }
     }
 }

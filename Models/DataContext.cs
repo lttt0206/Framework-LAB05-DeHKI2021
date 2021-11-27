@@ -153,6 +153,20 @@ namespace DeThiHKI2021.Models
             }
             return nvbt;
         }
+        public int sqlDeleteNVBT(string maNV, string maTB, string maCH, int lanThu)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                var str = @"delete NV_BT where MaNhanVien=@maNhanVien and MaThietBi=@maThietBi and MaCanHo=@maCanHo and LanThu=@lan";
+                SqlCommand cmd = new SqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("maNhanVien", maNV);
+                cmd.Parameters.AddWithValue("maThietBi", maTB);
+                cmd.Parameters.AddWithValue("maCanHo", maCH);
+                cmd.Parameters.AddWithValue("lan", lanThu);
+                return (cmd.ExecuteNonQuery());
+            }
+        }
         public NVBTModel viewTBBT(string maNV, string maTB, string maCH, int lanThu, DateTime ngaybt)
         {
             NVBTModel nvbt = new NVBTModel();
@@ -163,13 +177,20 @@ namespace DeThiHKI2021.Models
             nvbt.NgayBaoTri = ngaybt;
             return nvbt;
         }
-        /*public int sqlUpdateNVBT(NVBTModel nvbt)
+        public int sqlUpdateNVBT(NVBTModel nvbt)
         {
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-
+                var str = @"update NV_BT set NgayBaoTri=@ngaybt where MaNhanVien=@maNhanVien and MaThietBi=@maThietBi and MaCanHo=@maCanHo and LanThu=@lan";
+                SqlCommand cmd = new SqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("maNhanVien", nvbt.MaNhanVien);
+                cmd.Parameters.AddWithValue("maThietBi", nvbt.MaThietBi);
+                cmd.Parameters.AddWithValue("maCanHo", nvbt.MaCanHo);
+                cmd.Parameters.AddWithValue("lan", nvbt.LanThu);
+                cmd.Parameters.AddWithValue("ngaybt", nvbt.NgayBaoTri.ToString("yyyy-MM-dd"));
+                return (cmd.ExecuteNonQuery());
             }
-        }*/
+        }
     }
 }

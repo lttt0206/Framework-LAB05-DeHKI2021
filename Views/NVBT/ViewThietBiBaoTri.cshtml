@@ -3,12 +3,11 @@
 }
 @model DeThiHKI2021.Models.NVBTModel
 @{
-    <form action="/NhanVien/" method="post">
-        <label>Mã thiết bị:</label> <input type="text" name="MaTB" value="@Model.MaThietBi" /><br>
-        <label>Mã căn hộ: </label> <input type="text" name="MaCH" value="@Model.MaCanHo" /><br>
+    <form action="/NVBT/UpdateThietBiBaoTri/?maNV=@Model.MaNhanVien" method="post">
+        <label>Mã thiết bị:</label> <input type="text" name="MaThietBi" value="@Model.MaThietBi" /><br>
+        <label>Mã căn hộ: </label> <input type="text" name="MaCanHo" value="@Model.MaCanHo" /><br>
         <label>Lần thứ: </label> <input type="text" name="LanThu" value="@Model.LanThu" /><br>
-        <label>Ngày bảo trì: </label> <input type="date" name="NgayBaoTri" value="@Model.NgayBaoTri.ToString("yyyy-MM-dd")" />
-        @*<input asp-for="NgayBaoTri" /><span asp-validation-for="NgayBaoTri"></span>*@<br>
+        <label>Ngày bảo trì: </label> <input type="date" name="NgayBaoTri" value="@Model.NgayBaoTri.ToString("yyyy-MM-dd")" /><br>
         <input type="submit" name="submit" value="Update" />
     </form>
 }

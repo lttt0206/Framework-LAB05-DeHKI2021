@@ -3,7 +3,13 @@
 }
 @model DeThiHKI2021.Models.NVBTModel
 @{
-    <form action="/NVBT/UpdateThietBiBaoTri/?maNV=@Model.MaNhanVien" method="post">
+    <form action="/NVBT/UpdateThietBiBaoTri" method="post">
+        <div style="display:none">
+            <input type="hidden" name="maNVkey" value="@Model.MaNhanVien" />
+            <input type="hidden" name="maTBkey" value="@Model.MaThietBi" />
+            <input type="hidden" name="maCHkey" value="@Model.MaCanHo" />
+            <input type="hidden" name="lanthukey" value="@Model.LanThu" />
+        </div>
         <label>Mã thiết bị:</label> <input type="text" name="MaThietBi" value="@Model.MaThietBi" /><br>
         <label>Mã căn hộ: </label> <input type="text" name="MaCanHo" value="@Model.MaCanHo" /><br>
         <label>Lần thứ: </label> <input type="text" name="LanThu" value="@Model.LanThu" /><br>

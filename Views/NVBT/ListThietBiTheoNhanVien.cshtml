@@ -31,8 +31,12 @@
                 @item.NgayBaoTri.ToString("dd/MM/yyyy")
             </td>
             <td>
-                <a href="DeleteThietBiBaoTri?MaNV=@item.MaNhanVien&MaTB=@item.MaThietBi&MaCH=@item.MaCanHo&lan=@item.LanThu">Delete</a>
-                <a href="ViewThietBiBaoTri?MaNV=@item.MaNhanVien&MaTB=@item.MaThietBi&MaCH=@item.MaCanHo&lan=@item.LanThu&ngay=@item.NgayBaoTri.ToString()">View</a>
+                <form id="tbbt-form" action="/NVBT/DeleteThietBiBaoTri?MaNV=@item.MaNhanVien&&MaTB=@item.MaThietBi&&MaCH=@item.MaCanHo&&lan=@item.LanThu" method="post">
+                    <a href="#" onclick="document.getElementById('tbbt-form').submit();">Delete</a>
+                </form>
+                <form id="tbbt-form2" action="/NVBT/ViewThietBiBaoTri?MaNV=@item.MaNhanVien&MaTB=@item.MaThietBi&MaCH=@item.MaCanHo&lan=@item.LanThu&ngay=@item.NgayBaoTri.ToString()" method="post">
+                    <a href="#" onclick="document.getElementById('tbbt-form2').submit();">View</a>
+                </form>
             </td>
         </tr>
     }

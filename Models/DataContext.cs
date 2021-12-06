@@ -177,14 +177,19 @@ namespace DeThiHKI2021.Models
             nvbt.NgayBaoTri = ngaybt;
             return nvbt;
         }
-        public int sqlUpdateNVBT(NVBTModel nvbt)
+        public int sqlUpdateNVBT(string maNVkey, string maTBkey, string maCHkey, int lanthukey, NVBTModel nvbt)
         {
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
-                var str = @"update NV_BT set NgayBaoTri=@ngaybt where MaNhanVien=@maNhanVien and MaThietBi=@maThietBi and MaCanHo=@maCanHo and LanThu=@lan";
+                var str = @"update NV_BT 
+                            set MaThietBi=@maThietBi, MaCanHo=@maCanHo, LanThu=@lan, NgayBaoTri=@ngaybt 
+                            where MaNhanVien=@maNVkey and MaThietBi=@maTBkey and MaCanHo=@maCHkey and LanThu=@lanthukey";
                 SqlCommand cmd = new SqlCommand(str, conn);
-                cmd.Parameters.AddWithValue("maNhanVien", nvbt.MaNhanVien);
+                cmd.Parameters.AddWithValue("maNVkey", maNVkey);
+                cmd.Parameters.AddWithValue("maTBkey", maTBkey);
+                cmd.Parameters.AddWithValue("maCHkey", maCHkey);
+                cmd.Parameters.AddWithValue("lanthukey", lanthukey);
                 cmd.Parameters.AddWithValue("maThietBi", nvbt.MaThietBi);
                 cmd.Parameters.AddWithValue("maCanHo", nvbt.MaCanHo);
                 cmd.Parameters.AddWithValue("lan", nvbt.LanThu);
